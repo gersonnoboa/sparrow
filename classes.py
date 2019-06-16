@@ -3,6 +3,20 @@ class Subtitles:
     self.subtitles = subtitles
 
 
+  def get_release_names(self):
+    return list(map(self.get_titles_from_subtitle, self.subtitles))
+
+
+  def get_titles_from_subtitle(self, subtitle):
+    return subtitle.release_name
+
+
+  def get_subtitle_with_release_name(self, release_name):
+    for subtitle in self.subtitles:
+      if subtitle.release_name == release_name:
+        return subtitle
+
+
 class Subtitle:
   def __init__(self, release_name, srt_name, zip_download_link, score, download_count):
     self.release_name = release_name
