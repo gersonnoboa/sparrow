@@ -24,3 +24,12 @@ class Subtitle:
     self.zip_download_link = zip_download_link
     self.score = score
     self.download_count = download_count
+
+
+  def get_subtitle_raw_name(self):
+    string_components = self.srt_name.split(".")
+
+    if len(string_components) >= 1:
+      return string_components[0]
+      
+    return None
