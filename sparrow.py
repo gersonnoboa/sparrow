@@ -1,38 +1,14 @@
 #!/usr/bin/env python
-
-import argparse
-import urllib
-import requests
+from argument_parsing import get_parsed_arguments
+from search import get_open_subtitles_search_result
+from json_parsing import parse_json
+from subtitles_presenter import present_subtitles
 
 def start():
   arguments = get_parsed_arguments()
-  request = get_open_subtitles_search_result(arguments.title)
-  json = request.json()
-
-  print(len(json))
-
-
-def get_parsed_arguments():
-  parser = argparse.ArgumentParser('sparrow')
-  parser.add_argument('title', help='Title of movie or show', type=str)
-  arguments = parser.parse_args()
-  return arguments
-
-
-def get_open_subtitles_search_result(query):  
-  url = get_search_url(query)
-  headers = {'user-agent': 'TemporaryUserAgent'}
-  resp = requests.get(url, headers=headers)
-
-  return resp
-
-
-def get_search_url(query):
-  encodedQuery = urllib.parse.quote(query)
-  apiBaseURL = f'https://rest.opensubtitles.org/search/query-{encodedQuery}/sublanguageid-eng'
-  
-  print(apiBaseURL)
-  return apiBaseURL
+  request = get_open_subtitles_search_result(arguments.title, arguments.episode, arguments.season)
+  movies = parse_json(request.json())
+  present_subtitles(movies)
 
 
 start()
