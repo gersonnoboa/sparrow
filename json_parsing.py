@@ -2,7 +2,7 @@ from classes import *
 
 
 def parse_json(json):
-  min_value = min(len(json), 10)
+  min_value = min(len(json), 20)
   subtitlesList = list()
 
   for index in range(1, min_value):
