@@ -15,12 +15,12 @@ def get_search_url(query, episode, season):
   apiURL.append('https://rest.opensubtitles.org/search')
 
   if episode:
-    apiURL.append(f'/episode-{episode}')
+    apiURL.append('/episode-%s'%(episode))
 
-  apiURL.append(f'/query-{encodedQuery}')
+  apiURL.append('/query-%s'%(encodedQuery))
 
   if season:
-    apiURL.append(f'/season-{season}')
+    apiURL.append('/season-%s'%(season))
 
   apiURL.append('/sublanguageid-eng')
 

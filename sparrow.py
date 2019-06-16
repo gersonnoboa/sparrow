@@ -19,7 +19,7 @@ def start():
   subtitle = get_subtitle_from_user(subtitles)
 
   if subtitle:
-    new_subtitle_name = f'{subtitle.release_name}.eng.srt'
+    new_subtitle_name = '%s.eng.srt'%(subtitle.release_name)
 
     if not rename_file(subtitle.release_name):
       print("Error renaming video file")

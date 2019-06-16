@@ -25,7 +25,7 @@ def get_new_filename(new_name, old_filename):
   if not file_extension:
     return None
 
-  return f'{new_name}.{file_extension}'
+  return '%s.%s'%(new_name, file_extension)
 
 
 def get_file_extension(file):
